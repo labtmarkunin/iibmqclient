@@ -1,4 +1,4 @@
-# © Copyright IBM Corporation 2015.
+# ï¿½ Copyright IBM Corporation 2015.
 #
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
@@ -67,7 +67,7 @@ RUN mkdir -p /tmp/mq \
 
 COPY mq-dev-config.sh mq-license-check.sh mq.sh setup-mqm-web.sh setup-var-mqm.sh /usr/local/bin/
 COPY *.mqsc /etc/mqm/
-COPY *.bar  /etc/mqm/
+# bar files will be copied after IIB installation
 COPY admin.json /etc/mqm/
 COPY mq-dev-config /etc/mqm/mq-dev-config
 
@@ -80,6 +80,10 @@ RUN mkdir /opt/ibm && \
     curl http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/integration/10.0.0.10-IIB-LINUX64-DEVELOPER.tar.gz \
     | tar zx --exclude iib-10.0.0.10/tools --directory /opt/ibm && \
     /opt/ibm/iib-10.0.0.10/iib make registry global accept license silently
+
+
+#Copy BARs
+COPY *.bar  /etc/mqm/
 
 # Configure system
 COPY kernel_settings.sh /tmp/
