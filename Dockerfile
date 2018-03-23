@@ -82,9 +82,6 @@ RUN mkdir /opt/ibm && \
     /opt/ibm/iib-10.0.0.10/iib make registry global accept license silently
 
 
-#Copy BARs
-COPY *.bar  /etc/mqm/
-
 # Configure system
 COPY kernel_settings.sh /tmp/
 RUN echo "IIB_10:" > /etc/debian_chroot  && \
@@ -121,6 +118,9 @@ RUN chgrp mqbrkrs /home/iibuser/agentx.json && \
 # Set BASH_ENV to source mqsiprofile when using docker exec bash -c
 ENV BASH_ENV=/usr/local/bin/iib_env.sh
 ENV ODBCINI=/etc/odbc.ini
+
+#Copy BARs
+COPY *.bar  /etc/mqm/
 
 
 # Expose default admin port and http port, plus MQ ports
