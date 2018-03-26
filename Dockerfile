@@ -68,6 +68,7 @@ RUN mkdir -p /tmp/mq \
 COPY mq-dev-config.sh mq-license-check.sh mq.sh setup-mqm-web.sh setup-var-mqm.sh /usr/local/bin/
 
 # bar files will be copied after IIB installation
+COPY *.mqsc /etc/mqm/
 COPY admin.json /etc/mqm/
 COPY mq-dev-config /etc/mqm/mq-dev-config
 
@@ -122,7 +123,7 @@ ENV ODBCINI=/etc/odbc.ini
 #Copy BARs
 COPY *.bar  /etc/mqm/
 
-COPY *.mqsc /etc/mqm/
+
 
 
 # Expose default admin port and http port, plus MQ ports
