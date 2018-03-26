@@ -66,7 +66,7 @@ RUN mkdir -p /tmp/mq \
 	&& sed -i 's/password\t\[success=1 default=ignore\]\tpam_unix\.so obscure sha512/password\t[success=1 default=ignore]\tpam_unix.so obscure sha512 minlen=8/' /etc/pam.d/common-password
 
 COPY mq-dev-config.sh mq-license-check.sh mq.sh setup-mqm-web.sh setup-var-mqm.sh /usr/local/bin/
-COPY *.mqsc /etc/mqm/
+
 # bar files will be copied after IIB installation
 COPY admin.json /etc/mqm/
 COPY mq-dev-config /etc/mqm/mq-dev-config
@@ -121,6 +121,8 @@ ENV ODBCINI=/etc/odbc.ini
 
 #Copy BARs
 COPY *.bar  /etc/mqm/
+
+COPY *.mqsc /etc/mqm/
 
 
 # Expose default admin port and http port, plus MQ ports
