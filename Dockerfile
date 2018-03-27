@@ -1,4 +1,4 @@
-# � Copyright IBM Corporation 2015.
+# © Copyright IBM Corporation 2015.
 #
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
@@ -66,9 +66,8 @@ RUN mkdir -p /tmp/mq \
 	&& sed -i 's/password\t\[success=1 default=ignore\]\tpam_unix\.so obscure sha512/password\t[success=1 default=ignore]\tpam_unix.so obscure sha512 minlen=8/' /etc/pam.d/common-password
 
 COPY mq-dev-config.sh mq-license-check.sh mq.sh setup-mqm-web.sh setup-var-mqm.sh /usr/local/bin/
-
-# bar files will be copied after IIB installation
 COPY *.mqsc /etc/mqm/
+
 COPY admin.json /etc/mqm/
 COPY mq-dev-config /etc/mqm/mq-dev-config
 
@@ -81,7 +80,6 @@ RUN mkdir /opt/ibm && \
     curl http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/integration/10.0.0.10-IIB-LINUX64-DEVELOPER.tar.gz \
     | tar zx --exclude iib-10.0.0.10/tools --directory /opt/ibm && \
     /opt/ibm/iib-10.0.0.10/iib make registry global accept license silently
-
 
 # Configure system
 COPY kernel_settings.sh /tmp/
@@ -122,9 +120,6 @@ ENV ODBCINI=/etc/odbc.ini
 
 #Copy BARs
 COPY *.bar  /etc/mqm/
-
-
-
 
 # Expose default admin port and http port, plus MQ ports
 EXPOSE 4414 7800 7883 1414 9443
