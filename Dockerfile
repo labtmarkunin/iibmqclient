@@ -123,10 +123,12 @@ ENV ODBCINI=/etc/odbc.ini
 # Expose default admin port and http port, plus MQ ports
 EXPOSE 4414 7800 7883 1414 9443
 
+#Copy BARs
+COPY *.bar  /etc/mqm/
+
 # USER iibuser
 
 # Set entrypoint to run management script
 ENTRYPOINT ["iib_manage.sh"]
 
-#Copy BARs
-COPY *.bar  /etc/mqm/
+
