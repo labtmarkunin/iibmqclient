@@ -118,8 +118,7 @@ RUN chgrp mqbrkrs /home/iibuser/agentx.json && \
 ENV BASH_ENV=/usr/local/bin/iib_env.sh
 ENV ODBCINI=/etc/odbc.ini
 
-#Copy BARs
-COPY *.bar  /etc/mqm/
+
 
 # Expose default admin port and http port, plus MQ ports
 EXPOSE 4414 7800 7883 1414 9443
@@ -128,3 +127,6 @@ EXPOSE 4414 7800 7883 1414 9443
 
 # Set entrypoint to run management script
 ENTRYPOINT ["iib_manage.sh"]
+
+#Copy BARs
+COPY *.bar  /etc/mqm/
