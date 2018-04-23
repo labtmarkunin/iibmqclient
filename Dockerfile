@@ -1,4 +1,4 @@
-FROM mycluster.icp:8500/default/iib-prod 
+FROM mycluster.icp:8500/default/iib-prod:10.0.0.10 
 
 MAINTAINER Timur Markunin timur.markunin1@ibm.com
 
