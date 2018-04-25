@@ -30,6 +30,6 @@ RUN mkdir -p /tmp/mq \
 # Clean up all the downloaded files
   	&& rm -rf /tmp/mq \
 	&& rm -rf /var/lib/apt/lists/* \
-	&& rm -rf /var/mqm \
-	&& useradd -G mqm iibuser 
+	&& rm -rf /var/mqm 
+	
 USER iibuser
