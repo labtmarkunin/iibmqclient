@@ -32,4 +32,6 @@ RUN mkdir -p /tmp/mq \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /var/mqm 
 	
+COPY *.bar  /etc/
+	
 USER iibuser
